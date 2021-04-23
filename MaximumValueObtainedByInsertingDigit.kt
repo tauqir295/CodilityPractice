@@ -1,6 +1,12 @@
 //the maximum possible value obtained by inserting one '5' digit inside the decimal N
 
-fun solution (N: Int): Int {
+fun main() {
+    println(solution(268, 5))
+    println(solution(-999, 5))
+    println(solution(7643, 5))
+}
+
+fun solution (N: Int, digitToInsert: Int): Int {
     val stringValue = N.toString()
     var maximumValue = Int.MIN_VALUE
     var index = 0
@@ -8,7 +14,7 @@ fun solution (N: Int): Int {
         index = 1
     }
     for (j1 in index until stringValue.length) {
-        val testValue= Integer.parseInt(stringValue.substring(0, j1) + 5 + stringValue.substring(j1, stringValue.length))
+        val testValue= Integer.parseInt(stringValue.substring(0, j1) + digitToInsert + stringValue.substring(j1, stringValue.length))
         if (maximumValue < testValue)
             maximumValue = testValue;
     }
